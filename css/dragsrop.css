@@ -1,0 +1,22 @@
+#left, #right {
+    float: left;
+    width: 350px;
+    height: 100px;
+    margin: 15px;
+    padding-top: 20px;
+    border: 1px solid black;
+  }
+  #left{
+    background-color: indianred;
+  }
+  #right{
+    background-color: cadetblue;
+  }
+  h2{
+    color:brown;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  p{
+    color:darkgreen;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }

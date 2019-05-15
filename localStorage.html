@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Local Storage</title>
+
+    
+</head>
+<body onload="initializeLocalStorage()">
+    <h1>Local Storage </h1>
+    <div id="values"> Counter Values ==> </div>
+    <button id="cntbtn" onclick="incrementCounter()">Increment</button>
+    <button id="cntbtn" onclick="decrementCounter()">Deccrement</button>
+    </body>
+    <script>
+
+            var currCounter = 0
+            function incrementCounter(){
+                currCounter = localStorage.counter++;
+                document.getElementById("values").innerHTML = currCounter;
+            }
+            function decrementCounter(){
+                currCounter = localStorage.counter--;
+                document.getElementById("values").innerHTML = currCounter;
+            }
+            function initializeLocalStorage(){
+        
+                if(localStorage){
+                    if(localStorage.counter == undefined){
+                        localStorage.counter = 0
+                    }else{
+                        currCounter = localStorage.counter;
+                    }
+                }
+                document.getElementById("values").innerHTML = currCounter;
+                
+            }
+            </script>
+</html> 

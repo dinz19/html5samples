@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title style="font-family: 'Georgia', Times New Roman, Times, serif">Video</title>
+</head>
+
+<body onload="InitializeValues()">
+
+    <div id="main" style="align-content: center">
+        <div id="videos">
+            <div id="left" style="align-content: left">
+                <h1>Video</h1>
+                <video id="vid" width="420" height="315" autoplay controls loop>
+                    <source src="mov_bbb.mp4">
+                    </source>
+                </video>
+                <br>
+                <button id="playbtn" style="background-color: green; color: honeydew" onclick="videoPlay()">
+                    Play
+                </button>
+                <button id="pausebtn" style="background-color: red; color: honeydew" onclick="videoPause()">
+                    Pause
+                </button>
+            </div>
+            <div id="right" style="align-content: right">
+                <h1>Youtube</h1>
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=1" >
+                </iframe>
+            </div>
+
+        </div>
+        <br>
+        <br>
+        <!--<div>
+            <h2>HTML 5 LOCAL STORAGE</h2>
+            <button onclick="incrementCounter()">Increment</button>
+            <h1 id="Result">COUNTER : </h1>
+        </div>
+    -->
+</body>
+<script>
+    var numberCounter = 0 
+    function videoPlay() {
+        document.getElementById("pausebtn").disbled = true;
+        document.getElementById("vid").play();
+    }
+
+    function videoPause() {
+        document.getElementById("playbtn").disbled = true;
+        document.getElementById("vid").pause();
+    }
+   
+   function incrementCounter() {
+        if (typeof (Storage) !== "undefined") {
+            console.log("Web Storage support Available.")
+            numberCounter =numberCounter + 1  
+           
+            document.getElementById("Result").innerHTML = numberCounter
+            localStorage.counter = numberCounter
+        } else {
+            console.log("Sorry! No Web Storage support.")
+        }
+        
+    }
+
+    function InitializeValues()
+    {
+        if(llocalStorage.counter== null || localStorage.counter== undefined)
+        {
+            numberCounter = 1
+            localStorage.counter= numberCounter
+        }
+    }
+</script>

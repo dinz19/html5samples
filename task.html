@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TODO</title>
+</head>
+<body onload="initializeValues()">
+    <h1>TASK MANAGER</h1>
+
+    <table style="border:none">
+        <tr>
+            <td>TASK </td>
+            <td><input type="text" id='taskbox' Width='400px' > </td>
+            <td><button id="AddTask" onclick="AddTask()">Add</button></td>
+        </tr>
+        <tr id=tabledata></tr>
+    </table>
+    <script>
+        var currentCounter = 0
+      
+        function AddTask()
+        {
+         currentCounter++
+         localStorage.counter = currentCounter
+         localStorage.setItem("task_"+ currentCounter , document.getElementById("taskbox").value)
+         document.getElementById("taskbox").value =""
+         LoadValues()
+        }    
+
+        function initializeValues()
+        {
+            if(localStorage.counter == null ||localStorage.counter ==undefined )
+            {
+                localStorage.counter == 0
+            }
+            else{
+                currentCounter = localStorage.counter
+            }
+            LoadValues()
+        }
+        function LoadValues()
+        {
+            document.getElementById("tabledata").innerHTML = ""
+            var divTag = document.createElement("div")
+            var orderlist = document.createElement("ol")
+            divTag.appendChild(orderlist)
+            
+            var maxcounter = localStorage.counter
+
+            for(i=0 ;i < maxcounter; i++)
+            {
+                var del = document.createElement("button")
+                del.id="task_" + i
+                del.onclick=deleteTask(this.id)
+
+                var lilist = document.createElement("li")
+                lilist.innerHTML = localStorage.getItem("task_" + i)
+                lilist.id="task_" + i
+                lilist.appendChild(del)
+                orderlist.appendChild(lilist)
+            }
+            
+            document.getElementById("tabledata").appendChild(divTag)
+        }
+        function deleteTask(id)
+        {
+            debugger;
+            localStorage.removeItem("task_" + id)
+            //document.getElementById(id).removeItem("task_" + id)
+           // document.getElementById(id).remove()
+            //localStorage.removeItem("lastname");
+
+        }
+    
+    </script>
+</body>
+</html>
